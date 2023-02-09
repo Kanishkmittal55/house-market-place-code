@@ -7,7 +7,7 @@ import React from "react";
 
 function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
+  //const location = useLocation();
 
   return (
     <footer className="navbar">
