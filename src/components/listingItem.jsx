@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import listing1 from "../assets/house-images/exterior_1.jpeg";
 import { ReactComponent as DeleteIcon } from "../assets/assets/svg/deleteImg.svg";
+import { ReactComponent as EditIcon } from "../assets/assets/svg/editIcon.svg";
 import bedIcon from "../assets/assets/svg/bedIcon.svg";
 import bathtubIcon from "../assets/assets/svg/bathtubIcon.svg";
 
-function ListingItem({ listing, id, onDelete }) {
+function ListingItem({ listing, id, onDelete, onEdit }) {
   return (
     <li className="categoryListing">
       <Link
         to={`/category/${listing.type}/${id}`}
         className="categoryListingLink"
       >
-        <img src={listing1} alt={listing.name} className="categoryListingImg" />
+        <img
+          src={listing.imgUrls[0]}
+          alt={listing.name}
+          className="categoryListingImg"
+        />
         <div className="categoryListingDetails">
           <p className="categoryListingLocation">{listing.location}</p>
           <p className="categoryListingName">{listing.name}</p>
@@ -45,6 +50,8 @@ function ListingItem({ listing, id, onDelete }) {
           onClick={() => onDelete(listing.id, listing.name)}
         />
       )}
+
+      {onEdit && <EditIcon className="editIcon" onClick={() => onEdit(id)} />}
     </li>
   );
 }
